@@ -1,5 +1,5 @@
 <template>
-	<tab-bar>
+	<tab-bar >
 		<tab-bar-item path="/home" >
 			<img slot="item-icon" src="~assets/img/tabber/home.svg"/>
 			<img slot="item-icon-active" src="~assets/img/tabber/active-home.svg"/>
@@ -36,4 +36,6 @@
 </script>
 
 <style>
+
+
 </style>
