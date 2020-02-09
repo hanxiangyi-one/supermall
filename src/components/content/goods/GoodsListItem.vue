@@ -1,6 +1,7 @@
 <template>
   <div class="goods-item">
-    <img :src="goodsItem.show.img" alt="" />
+     <!--通过@load监听图片加载完成-->
+    <img v-lazy="showImage" alt="" @load="imageLoad" @click="itemClick"/>
     <div class="goods-info">
       <p>{{goodsItem.title}}</p>
       <span class="price">{{goodsItem.price}}</span>
@@ -19,11 +20,32 @@ export default {
         return [];
       }
     }
+  },
+  computed:{
+     showImage(){
+       return this.goodsItem.image || this.goodsItem.show.img
+     }
+  },
+  methods:{
+    imageLoad() {
+      this.$bus.$emit('itemImageLoad')
+     // console.log(this.$bus);  $bus原本是没有意思的但我们在main.vue中通过Vue.prototype.$bus = new Vue()将它赋值成一个函数，通过$emit将它发射出去，
+     //home在通过on来监听
+     //if (this.$route.path.indexOf('/home')) {
+         //  this.$bus.$emit('homeitemImageLoad')
+   //  } else if (this.$route.path.indexOf('/detail')){
+    //   this.$bus.$emit('detailInemageLoad')
+    // }
+      
+    },
+    itemClick(){
+     this.$router.push('/deTail/' + this.goodsItem.iid)
+    }
   }
 };
 </script>
 
-<style>
+<style scoped>
 .goods-item {
   padding-bottom: 40px;
   position: relative;

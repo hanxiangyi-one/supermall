@@ -11,16 +11,16 @@ export function request(config) {
 // 比如每次发送网络请求时，都希望在界面中显示一个请求
 // 比如某些网络请求（登录（token）），必须携带一些特殊的信息
 instance.interceptors.request.use(config =>{
-  console.log(config);
+ 
   return config
 }), err =>{
-  console.log(err);
+  
 }
 //相应拦截
 instance.interceptors.response.use(res =>{
   return res.data
 }),err =>{
-  console.log(err);
+  
 }
 
 

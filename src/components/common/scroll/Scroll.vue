@@ -39,16 +39,24 @@ export default {
           this.$emit('scroll', position)
       })
       this.scroll.on('pullingUp',() =>{
-          //console.log('加载更多');
+          
           this.$emit('pullingUp')
       })
+    
   },
   methods: {
      scrollTo(x, y, time=300){
-        this.scroll.scrollTo(x, y, time)
+      this.scroll && this.scroll.scrollTo(x, y, time)
       },
-      finishPullUp() {
-          this.scroll.finishPullUp()
+      refresh() {
+
+      this.scroll && this.scroll.refresh && this.scroll.refresh()
+      },
+      finishPullUp(){
+      this.scroll && this.scroll.finishPullUp && this.scroll.finishPullUp()
+      },
+      getCurrentY() {
+          return this.scroll.y ? this.scroll.y : 0
       }
   }
 }
