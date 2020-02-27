@@ -2,7 +2,8 @@ import axios from 'axios'
 
 export function request(config) {
     const instance = axios.create({
-       baseURL:'http://106.54.54.237:8000/api/hy',
+      // 这个端口号是假的，如果需要端口号请添加Vx  coderwhy001 获取最新端口号
+       baseURL:'http://106.54.54.237:8000',
        timeout: 5000
     })
 // axios拦截器
